@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('vibes', function (Blueprint $table) {
             $table->id();
-            $table->string('content_text');
-            $table->string('content_image');
-            $table->string('content_emotions');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->longText('content');
+            $table->string('image')->nullable();
+            $table->string('emotions')->nullable();
             $table->timestamps();
         });
     }
